@@ -113,15 +113,15 @@ const PartnerMenuPage = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:5000/api/preorder", {
-        restaurant_id: restaurantId,
-        customer_id: 1, // Replace with actual customer ID
-        items: cart,
-      });
+      // const response = await axios.post("http://localhost:5000/api/preorder", {
+      //   restaurant_id: restaurantId,
+      //   customer_id: 1, // Replace with actual customer ID
+      //   items: cart,
+      // });
 
-      setEstimatedWaitTime(response.data.estimated_wait_time);
-      alert(`Preorder placed successfully! Estimated wait time: ${response.data.estimated_wait_time} minutes.`);
-      navigate("/checkout", {
+      // setEstimatedWaitTime(response.data.estimated_wait_time);
+      // alert(`Preorder placed successfully! Estimated wait time: ${response.data.estimated_wait_time} minutes.`);
+      navigate("/checkout-partner-res", {
         state: {
           cart,
           totalPrice,
