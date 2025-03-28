@@ -27,6 +27,8 @@ import MenuDisplay from './pages/MenuDisplay';
 import CartPage from './pages/CartPage';
 import CheckoutPage from "./pages/CheckoutPage";
 import PartnerMenuPage from './pages/PartnerMenu/PartnerMenuPage';
+import PartnerMenuCheckout from './pages/PartnerMenu/PartnerMenuCheckout';
+import Bill from './pages/PartnerMenu/Bill';
 
 function App() {
   return (
@@ -50,9 +52,26 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/restaurant-register" element={<RestaurantRegister />} />
             <Route path="/staff-login" element={<StaffLogin />} />
+            <Route path="/checkout-partner-res" element={<PartnerMenuCheckout />} />
+            <Route path='/bill/:preorderId' element={<Bill />} />
 
             <Route path="/menu/:restaurantId" element={<PartnerMenuPage />} />
 
+            <Route element={<PrivateRoute />}>
+              <Route path="/generate-qr" element={<QRCodeGenerator />} />
+              <Route path="/display-qr" element={<QRCodeDisplay />} />
+
+              <Route path="/menu" element={<MenuPage />} />
+              <Route path="/menu-list" element={<MenuList />} />
+              <Route path="/menu-display" element={<MenuDisplay />} />
+              <Route path='/profile' element={<ProfilePage />} />
+              <Route path="/dashboard/owner" element={<OwnerDashboard />} />
+              <Route path="/dashboard/staff" element={<StaffDashboard />} />
+              <Route path="/manage-staff" element={<StaffManagement />} />
+              <Route path="/staff-list" element={<StaffListPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+            </Route>
           </Routes>
         </div>
       </div>

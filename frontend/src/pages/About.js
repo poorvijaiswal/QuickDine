@@ -16,7 +16,7 @@ export default function About() {
         <div className="max-w-5xl  text-center text-white">
           <h2 className="text-4xl font-bold mb-4">About Us</h2>
           <p className="text-lg">
-            We provide innovative restaurant solutions to enhance customer experience,  
+            We provide innovative Cafe's Queue and analytic solutions to enhance customer experience,  
             offering QR-based ordering and real-time data analytics for seamless operations.
           </p>
         </div>
@@ -28,7 +28,7 @@ export default function About() {
             <h3 className="text-2xl font-semibold mb-2">Our Mission</h3>
             <p>
               To revolutionize dining with technology, reducing wait times, optimizing  
-              operations, and providing valuable insights for restaurant growth.
+              operations, and providing valuable insights for cafe's growth.
             </p>
           </div>
 

@@ -34,9 +34,9 @@ const PartnerRestaurant = () => {
       >
         <div className={styles.overlay}></div>
         <div className={styles.container}>
-          <h1 className={styles.heroTitle}>Explore Partner Restaurants</h1>
+          <h1 className={styles.heroTitle}>Explore Partner Cafeterias</h1>
           <p className={styles.heroSubtitle}>
-            Preorder your favorite dishes from our partner restaurants.
+            Preorder your favorite dishes from our partner Cafeterias.
           </p>
         </div>
       </section>
@@ -44,7 +44,7 @@ const PartnerRestaurant = () => {
       {/* Associated Restaurants Section */}
       <section className={styles.restaurantsSection} id="restaurants">
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Our Partner Restaurants</h2>
+          <h2 className={styles.sectionTitle}>Our Partner Cafeterias</h2>
           {error && <p className="text-red-500">{error}</p>}
           <div className={styles.restaurantGrid}>
             {restaurants.map((restaurant) => (

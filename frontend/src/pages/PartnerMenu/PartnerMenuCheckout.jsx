@@ -27,7 +27,7 @@ const handlePayment = async () => {
         key: process.env.RAZORPAY_KEY_ID,
         amount: amount,
         currency: "INR",
-        name: "DinEasy",
+        name: "QuickDine",
         description: "Preorder Payment",
         order_id: orderId,
         handler: async (response) => {

@@ -33,7 +33,7 @@ export default function Payment() {
       key: "rzp_test_aR6MrtfKJOXT9l", // Replace with your Razorpay key ID
       amount: amount, // Amount in paise
       currency: "INR",
-      name: "DinEasy",
+      name: "QuickDine",
       description: "Membership Payment",
       order_id: orderId,
       handler: async (response) => {

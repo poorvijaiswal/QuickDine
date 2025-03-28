@@ -64,7 +64,7 @@ export default function Dashboard() {
         <main className="flex-1 bg-white rounded-lg shadow-lg p-6 mt-4">
           <h2 className="text-2xl font-semibold text-gray-800">Welcome to the Dashboard</h2>
           <p className="mt-2 text-gray-600">
-            Manage your restaurant operations here. Track orders, manage staff, and analyze sales.
+            Manage your Cafeteria operations here. Track orders, manage staff, and analyze sales.
           </p>
 
           {/* Statistics Cards */}

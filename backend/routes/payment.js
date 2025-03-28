@@ -143,7 +143,7 @@ router.get("/generate-qrcode/:preorderId", async (req, res) => {
   const { preorderId } = req.params;
 
   try {
-    const qrCodeData = `http://localhost:3000/bill/${preorderId}`; // URL to view the bill
+    const qrCodeData = `http://localhost:5000/api/payment/generate-qrcode/${preorderId}`; // URL to view the bill
     const qrCode = await QRCode.toDataURL(qrCodeData);
 
     res.status(200).json({ qrCode });
