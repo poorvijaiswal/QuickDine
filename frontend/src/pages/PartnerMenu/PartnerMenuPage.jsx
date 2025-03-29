@@ -24,7 +24,7 @@ const PartnerMenuPage = () => {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const response = await axios.get(`${process.env.Backend_url}/api/menu/${restaurantId}`);
+        const response = await axios.get(`http://localhost:5000/api/menu/${restaurantId}`);
         setMenu(response.data);
 
         // Initialize quantities for each menu item
@@ -46,7 +46,7 @@ const PartnerMenuPage = () => {
     useEffect(() => {
       const fetchQueueData = async () => {
         try {
-          const response = await axios.get(`${process.env.Backend_url}/api/preorder/queue/${restaurantId}`);
+          const response = await axios.get(`http://localhost:5000/api/preorder/queue/${restaurantId}`);
           setQueueLength(response.data.queueLength);
           setEstimatedWaitTime(response.data.estimatedWaitTime);
         } catch (err) {
@@ -113,7 +113,7 @@ const PartnerMenuPage = () => {
         return;
       }
 
-      // const response = await axios.post(`${process.env.Backend_url}/api/preorder`, {
+      // const response = await axios.post("http://localhost:5000/api/preorder", {
       //   restaurant_id: restaurantId,
       //   customer_id: 1, // Replace with actual customer ID
       //   items: cart,
@@ -146,7 +146,7 @@ const PartnerMenuPage = () => {
         {menu.map((item) => (
           <div key={item.id} className={`${styles["menu-item"]} p-6 bg-white shadow-lg rounded-lg`}>
             <img
-              src={`${process.env.Backend_url}/uploads/${item.image_url}`}
+              src={`http://localhost:5000/uploads/${item.image_url}`}
               alt={item.name}
               className={`${styles["menu-image"]} mb-4`}
             />

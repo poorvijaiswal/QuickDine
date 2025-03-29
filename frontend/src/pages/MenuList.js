@@ -17,7 +17,7 @@ const MenuList = () => {
       if (!token) {
         throw new Error("No token found in local storage");
       }
-      const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
+      const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,7 +32,7 @@ const MenuList = () => {
   const fetchMenu = async (restaurantId) => {
     try {
       if (!restaurantId) return;
-      const response = await axios.get(`${process.env.Backend_url}/api/menu/${restaurantId}`);
+      const response = await axios.get(`http://localhost:5000/api/menu/${restaurantId}`);
       setMenu(response.data);
     } catch (error) {
       setError("Error fetching menu data.");
@@ -73,7 +73,7 @@ const MenuList = () => {
                   <td className="border p-2 text-l font-bold text-green-600">{"\u20B9"}{item.price}</td>
                   <td className="border p-2 w-50">
                     <img 
-                      src={item.image_url ? `${process.env.Backend_url}/uploads/${item.image_url}` : "https://via.placeholder.com/100"} 
+                      src={item.image_url ? `http://localhost:5000/uploads/${item.image_url}` : "https://via.placeholder.com/100"} 
                       alt={item.name} 
                       className="w-20 h-20 rounded-lg"
                     />

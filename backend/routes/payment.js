@@ -2,7 +2,6 @@ const express = require('express');
 const Razorpay = require('razorpay');
 const crypto = require("crypto");
 const QRCode = require("qrcode");
-const dotenv = require('dotenv');
 const db = require('../config/db');
 const router = express.Router();
 
@@ -145,7 +144,7 @@ router.get("/generate-qrcode/:preorderId", async (req, res) => {
   const { preorderId } = req.params;
 
   try {
-    const qrCodeData = `${process.env.Backend_url}/api/payment/generate-qrcode/${preorderId}`; // URL to view the bill
+    const qrCodeData = `http://localhost:5000/api/payment/generate-qrcode/${preorderId}`; // URL to view the bill
     const qrCode = await QRCode.toDataURL(qrCodeData);
 
     res.status(200).json({ qrCode });

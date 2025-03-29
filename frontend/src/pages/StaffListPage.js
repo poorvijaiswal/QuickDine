@@ -14,7 +14,7 @@ const StaffListPage = () => {
 
   const fetchStaff = async () => {
     try {
-      const response = await axios.get(`${process.env.Backend_url}/api/staff`);
+      const response = await axios.get("http://localhost:5000/api/staff");
       setStaff(response.data);
     } catch (error) {
       setError("Error fetching staff data.");
@@ -26,7 +26,7 @@ const StaffListPage = () => {
     if (!window.confirm("Are you sure you want to delete this staff member?")) return;
 
     try {
-      await axios.delete(`${process.env.Backend_url}/api/staff/${staff_id}`);
+      await axios.delete(`http://localhost:5000/api/staff/${staff_id}`);
       fetchStaff();
     } catch (error) {
       setError("Error deleting staff: " + error.message);

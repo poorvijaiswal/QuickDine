@@ -4,7 +4,7 @@ const db = require('../config/db');
 const generateQRCode = async (req, res) => {
     const { tableNumber, size, restaurantId } = req.body;
     console.log(restaurantId);
-    const qrText = `${process.env.Frontend_url}/order?table=${tableNumber}`;
+    const qrText = `http://localhost:3000/order?table=${tableNumber}`;
 
     try {
         console.log('Generating QR code for:', qrText, 'with size:', size);

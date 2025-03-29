@@ -14,7 +14,7 @@ const StaffDashboard = () => {
   // Fetch all orders
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`${process.env.Backend_url}/api/order`);
+      const response = await axios.get("http://localhost:5000/api/order");
       setOrders(response.data);
     } catch (err) {
       setError("Error fetching orders.");
@@ -27,7 +27,7 @@ const StaffDashboard = () => {
     if (!window.confirm(`Mark this order as ${status}?`)) return;
 
     try {
-      await axios.put(`${process.env.Backend_url}/api/order/${id}`, { status });
+      await axios.put(`http://localhost:5000/api/order/${id}`, { status });
       fetchOrders(); // Refresh list
     } catch (err) {
       setError("Error updating order.");
@@ -40,7 +40,7 @@ const StaffDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this order?")) return;
 
     try {
-      await axios.delete(`${process.env.Backend_url}/api/order/${id}`);
+      await axios.delete(`http://localhost:5000/api/order/${id}`);
       fetchOrders(); // Refresh list
     } catch (err) {
       setError("Error deleting order.");

@@ -40,7 +40,7 @@ export default function Payment() {
         try {
           console.log(`Payment successful with payment_id: ${response.razorpay_payment_id}`);
           // Update membership details in the database
-          const result = await axios.post(`${process.env.Backend_url}/api/membership/update-membership`, {
+          const result = await axios.post("http://localhost:5000/api/membership/update-membership", {
             membership_id: membershipId,
             duration,
             payment_id: response.razorpay_payment_id,

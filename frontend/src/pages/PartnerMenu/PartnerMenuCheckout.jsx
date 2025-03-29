@@ -16,7 +16,7 @@ const handlePayment = async () => {
       setIsLoading(true);
   
       // Step 1: Create Razorpay order
-      const orderResponse = await axios.post(`${process.env.Backend_url}/api/payment/create-order`, {
+      const orderResponse = await axios.post("http://localhost:5000/api/payment/create-order", {
         amount: totalPrice,
       });
   
@@ -32,7 +32,7 @@ const handlePayment = async () => {
         order_id: orderId,
         handler: async (response) => {
           // Step 3: Verify payment and create preorder
-          const verifyResponse = await axios.post(`${process.env.Backend_url}/api/payment/verify-payment`, {
+          const verifyResponse = await axios.post("http://localhost:5000/api/payment/verify-payment", {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,
@@ -45,7 +45,7 @@ const handlePayment = async () => {
           const { preorderId } = verifyResponse.data;
 
           // Step 4: Fetch QR Code
-          const qrResponse = await axios.get(`${process.env.Backend_url}/api/payment/generate-qrcode/${preorderId}`);
+          const qrResponse = await axios.get(`http://localhost:5000/api/payment/generate-qrcode/${preorderId}`);
           setQrCode(qrResponse.data.qrCode);
 
           alert("Payment successful! Preorder created.");
@@ -80,7 +80,7 @@ const handlePayment = async () => {
       <div className="cart-summary">
         {cart.map((item) => (
           <div key={item.id} className="checkout-item">
-            <img src={`${process.env.Backend_url}/uploads/${item.image_url}`} alt={item.name} className="checkout-image" />
+            <img src={`http://localhost:5000/uploads/${item.image_url}`} alt={item.name} className="checkout-image" />
             <div>
               <h2>{item.name}</h2>
               <p>Quantity: {item.quantity}</p>

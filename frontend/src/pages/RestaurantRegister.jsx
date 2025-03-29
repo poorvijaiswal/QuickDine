@@ -31,7 +31,7 @@ export default function RestaurantRegister() {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${process.env.Backend_url}/api/restaurant/register`, {
+      const response = await axios.post('http://localhost:5000/api/restaurant/register', {
         membership_id: membershipId, // Replace with actual membership_id from logged-in user
         name,
         address

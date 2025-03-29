@@ -44,7 +44,7 @@ const CartPage = () => {
           <div className="cart-list">
             {cart.map((item) => (
               <div key={item.id} className="cart-item">
-                <img src={`${process.env.Backend_url}/uploads/${item.image_url}`} alt={item.name} className="cart-image" />
+                <img src={`http://localhost:5000/uploads/${item.image_url}`} alt={item.name} className="cart-image" />
 
                 <div className="cart-details">
                   <h2 className="cart-title">{item.name}</h2>

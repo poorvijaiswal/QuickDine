@@ -32,7 +32,7 @@ const StaffManagement = () => {
       if (!token) {
         throw new Error("No token found in local storage");
       }
-      const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
+      const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -60,10 +60,10 @@ const StaffManagement = () => {
 
     try {
       if (editingStaff) {
-        await axios.put(`${process.env.Backend_url}/api/staff/${editingStaff.staff_id}`, formData);
+        await axios.put(`http://localhost:5000/api/staff/${editingStaff.staff_id}`, formData);
         setMessage("Staff updated successfully!");
       } else {
-        await axios.post(`${process.env.Backend_url}/api/staff`, formData);
+        await axios.post("http://localhost:5000/api/staff", formData);
         setMessage("Staff added successfully!");
       }
       navigate("/staff-list");
