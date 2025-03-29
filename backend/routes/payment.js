@@ -2,6 +2,7 @@ const express = require('express');
 const Razorpay = require('razorpay');
 const crypto = require("crypto");
 const QRCode = require("qrcode");
+const dotenv = require('dotenv');
 const db = require('../config/db');
 const router = express.Router();
 
