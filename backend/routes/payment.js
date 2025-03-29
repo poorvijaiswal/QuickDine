@@ -132,6 +132,7 @@ router.post("/verify-payment", async (req, res) => {
           preorderId,
           estimatedWaitTime,
         });
+        // localStorage.removeItem("cart")
       });
     });
   });
@@ -143,7 +144,7 @@ router.get("/generate-qrcode/:preorderId", async (req, res) => {
   const { preorderId } = req.params;
 
   try {
-    const qrCodeData = `http://localhost:5000/api/payment/generate-qrcode/${preorderId}`; // URL to view the bill
+    const qrCodeData = `${process.env.Backend_url}/api/payment/generate-qrcode/${preorderId}`; // URL to view the bill
     const qrCode = await QRCode.toDataURL(qrCodeData);
 
     res.status(200).json({ qrCode });

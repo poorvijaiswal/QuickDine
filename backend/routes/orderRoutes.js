@@ -72,6 +72,7 @@ router.post("/order", (req, res) => {
 
                         console.log(" Order items stored successfully!");
                         res.status(201).json({ message: " Order placed successfully!", order_id });
+                        // localStorage.removeItem("cart"); // Clear cart after order placement
                     });
                 }
             });

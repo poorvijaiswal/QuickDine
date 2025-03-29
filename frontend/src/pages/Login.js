@@ -57,7 +57,7 @@ export default function Login() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const response = await axios.post(`${process.env.Backend_url}/api/auth/login`, formData);
       const{ token, membership_id } = response.data;
 
       localStorage.setItem("token", token); // Store token in local storage
@@ -106,7 +106,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/forgot-password", { email: resetEmail });
+      const response = await axios.post(`${process.env.Backend_url}/api/auth/forgot-password`, { email: resetEmail });
       setMessage(response.data.message || "Password reset link sent to your email.");
       setShowForgotPassword(false);
     } catch (err) {

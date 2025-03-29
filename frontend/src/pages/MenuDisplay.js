@@ -31,7 +31,7 @@ const MenuDisplay = () => {
         throw new Error("No token found in local storage");
       }
 
-      const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
+      const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -48,7 +48,7 @@ const MenuDisplay = () => {
     try {
       if (!id) return;
 
-      const response = await axios.get(`http://localhost:5000/api/menu/${id}`);
+      const response = await axios.get(`${process.env.Backend_url}/api/menu/${id}`);
       setMenu(response.data);
       setFilteredMenu(response.data);
 
@@ -162,7 +162,7 @@ const MenuDisplay = () => {
           {filteredMenu.length > 0 ? (
             filteredMenu.map(item => (
               <div key={item.id} className="menu-item">
-                <img src={`http://localhost:5000/uploads/${item.image_url}`} alt={item.name} className="menu-image" />
+                <img src={`${process.env.Backend_url}/uploads/${item.image_url}`} alt={item.name} className="menu-image" />
 
                 <div className="menu-content">
                   <h2 className="menu-title">{item.name}</h2>

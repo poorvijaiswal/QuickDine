@@ -19,7 +19,7 @@ const QRCodeGenerator = () => {
         if (!token) {
           throw new Error("No token found in local storage");
         }
-        const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
+        const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
           headers: {
             Authorization: `Bearer ${token}` // Ensure no double quotes around the token
           }
@@ -41,7 +41,7 @@ const QRCodeGenerator = () => {
       if (!token) {
         throw new Error("No token found in local storage");
       }
-      const response = await axios.post("http://localhost:5000/api/qr/generate", { tableNumber, size, restaurantId }, {
+      const response = await axios.post(`${process.env.Backend_url}/api/qr/generate`, { tableNumber, size, restaurantId }, {
         headers: {
           Authorization: `Bearer ${token}` // Ensure no double quotes around the token
         }

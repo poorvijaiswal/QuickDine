@@ -18,12 +18,12 @@ const Bill = ({ }) => {
     const fetchPreorderDetails = async () => {
       try {
         // Fetch preorder details
-        // const response = await axios.get(`http://localhost:5000/api/preorder/${preorderId}`);
+        // const response = await axios.get(`${process.env.Backend_url}/api/preorder/${preorderId}`);
         // setPreorder(response.data);
         // console.log("Preorder details:", response.data);
 
         // Fetch QR code
-        const qrResponse = await axios.get(`http://localhost:5000/api/payment/generate-qrcode/${preorderId}`);
+        const qrResponse = await axios.get(`${process.env.Backend_url}/api/payment/generate-qrcode/${preorderId}`);
         setQrCode(qrResponse.data.qrCode);
       } catch (error) {
         console.error("Error fetching preorder details or QR code:", error);
@@ -36,7 +36,7 @@ const Bill = ({ }) => {
 
   const markOrderAsComplete = async () => {
     try {
-      await axios.post("http://localhost:5000/api/payment/mark-complete", { preorderId });
+      await axios.post(`${process.env.Backend_url}/api/payment/mark-complete`, { preorderId });
       setMessage("Order marked as complete!");
     } catch (error) {
       console.error("Error marking order as complete:", error);

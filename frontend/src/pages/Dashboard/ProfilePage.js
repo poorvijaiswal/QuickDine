@@ -16,7 +16,7 @@ const ProfilePage = () => {
       const fetchUserData = async () => {
           try {
               console.log("Fetching user data for membershipId:", membershipId); // Debugging
-              const response = await axios.get(`http://localhost:5000/api/user/${membershipId}`, {
+              const response = await axios.get(`${process.env.Backend_url}/api/user/${membershipId}`, {
                   headers: {
                       Authorization: `Bearer ${token}`,
                   },
@@ -24,7 +24,7 @@ const ProfilePage = () => {
   
               console.log("User Data Response:", response.data); // 🔍 Check API Response
               setUserData(response.data);
-              setProfileImage(`http://localhost:5000${response.data.profile_image}`);
+              setProfileImage(`${process.env.Backend_url}${response.data.profile_image}`);
           } catch (err) {
               console.error("Error fetching user data", err);
           }
@@ -38,7 +38,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchRestaurantData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/restaurant/${membershipId}`, {
+                const response = await axios.get(`${process.env.Backend_url}/api/restaurant/${membershipId}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -68,7 +68,7 @@ const ProfilePage = () => {
 
         try {
             const response = await axios.post(
-                `http://localhost:5000/api/user/update-profile/${membershipId}`,
+                `${process.env.Backend_url}/api/user/update-profile/${membershipId}`,
                 formData,
                 {
                     headers: {
@@ -79,7 +79,7 @@ const ProfilePage = () => {
             );
 
             alert("Profile updated successfully!");
-            setProfileImage(`http://localhost:5000${response.data.profile_image}`);
+            setProfileImage(`${process.env.Backend_url}${response.data.profile_image}`);
         } catch (err) {
             console.error("Error updating profile", err);
             alert("There was an error updating the profile.");

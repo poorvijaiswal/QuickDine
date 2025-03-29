@@ -261,7 +261,7 @@ router.post('/forgot-password', async (req, res) => {
           return res.status(500).json({ message: 'Database error', error: err });
         }
   
-        const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
+        const resetUrl = `${process.env.Frontend_url}/reset-password/${resetToken}`;
         const mailOptions = {
           from: process.env.EMAIL_USER,
           to: email,

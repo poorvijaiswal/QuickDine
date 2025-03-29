@@ -16,7 +16,7 @@ const QRCodeDisplay = () => {
         if (!token) {
           throw new Error("No token found in local storage");
         }
-        const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
+        const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -36,7 +36,7 @@ const QRCodeDisplay = () => {
       const fetchQRCodes = async () => {
         try {
           const token = localStorage.getItem("token");
-          const response = await axios.get(`http://localhost:5000/api/qr/getAllQRCodes/${restaurantId}`, {
+          const response = await axios.get(`${process.env.Backend_url}/api/qr/getAllQRCodes/${restaurantId}`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -102,7 +102,7 @@ const QRCodeDisplay = () => {
   const handleDelete = async (qrId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/qr/deleteQRCode/${qrId}`, {
+      await axios.delete(`${process.env.Backend_url}/api/qr/deleteQRCode/${qrId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Base URL for the backend API
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api', // adjust if your backend runs on another port or domain
+  baseURL: `${process.env.Backend_url}/api`, // adjust if your backend runs on another port or domain
 });
 
 // Example: Register function for a restaurant owner
@@ -31,7 +31,7 @@ export const loginStaff = (data) => API.post('/auth/staff-login', data);
 // export const createRazorpayOrder = (amount) => API.post('/membership/create-razorpay-order', { amount });
 
 export const createRazorpayOrder = async (price, membershipId) => {
-  const response = await axios.post("http://localhost:5000/api/payment/create-razorpay-order", {
+  const response = await axios.post(`${process.env.Backend_url}/api/payment/create-razorpay-order`, {
     price,
     membershipId
   });

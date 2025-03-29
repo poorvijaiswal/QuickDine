@@ -19,7 +19,7 @@ const CheckoutPage = () => {
         if (!token) {
           throw new Error("No token found in local storage");
         }
-        const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
+        const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ const CheckoutPage = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/order", {
+      const response = await fetch(`${process.env.Backend_url}/api/order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -78,7 +78,7 @@ const CheckoutPage = () => {
       <div className="cart-summary">
         {cart.map((item) => (
           <div key={item.id} className="checkout-item">
-            <img src={`http://localhost:5000/uploads/${item.image_url}`} alt={item.name} className="checkout-image" />
+            <img src={`${process.env.Backend_url}/uploads/${item.image_url}`} alt={item.name} className="checkout-image" />
             <div>
               <h2>{item.name}</h2>
               <p>Quantity: {item.quantity}</p>

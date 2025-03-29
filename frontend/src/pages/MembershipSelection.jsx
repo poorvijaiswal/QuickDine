@@ -41,7 +41,7 @@ export default function MembershipSelection() {
           price = 0;
       }
 
-      const response = await axios.post("http://localhost:5000/api/membership/select-membership", {
+      const response = await axios.post(`${process.env.Backend_url}/api/membership/select-membership`, {
         membership_id: membershipId,
         duration,
         membershipType,

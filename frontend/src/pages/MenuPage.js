@@ -35,7 +35,7 @@ const MenuPage = () => {
       if (!token) {
         throw new Error("No token found in local storage");
       }
-      const response = await axios.get("http://localhost:5000/api/auth/getRestaurantId", {
+      const response = await axios.get(`${process.env.Backend_url}/api/auth/getRestaurantId`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -51,7 +51,7 @@ const MenuPage = () => {
   // Fetch Menu Items
   const fetchMenuItems = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/menu/${restaurantId}`);
+      const response = await axios.get(`${process.env.Backend_url}/api/menu/${restaurantId}`);
       setMenuItems(response.data);
     } catch (error) {
       console.error("Error fetching menu items:", error);
@@ -80,12 +80,12 @@ const MenuPage = () => {
 
     try {
       if (editingItem) {
-        await axios.put(`http://localhost:5000/api/menu/${editingItem.id}`, form, {
+        await axios.put(`${process.env.Backend_url}/api/menu/${editingItem.id}`, form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         setMessage("Menu item updated successfully!");
       } else {
-        await axios.post("http://localhost:5000/api/menu", form, {
+        await axios.post(`${process.env.Backend_url}/api/menu`, form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         setMessage("Menu item added successfully!");
@@ -112,7 +112,7 @@ const MenuPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/menu/${id}`);
+      await axios.delete(`${process.env.Backend_url}/api/menu/${id}`);
       setMessage("Menu item deleted successfully!");
       fetchMenuItems();
     } catch (error) {
